@@ -33,7 +33,6 @@ while True:
     #pega comando do user
     comando = input(caminho + " >>> ")
     
-
     #pra sair do loop
     if comando.lower() == "sair":
         sair()
@@ -87,8 +86,11 @@ while True:
         if resultado.stdout:
             print(resultado.stdout.strip())
             comandos.append(comando)
-        if resultado.stderr:
+        elif resultado.stderr:
             print("Erro:", resultado.stderr.strip())
+        else:
+            comandos.append(comando)
+        
 
     #se der um erro no subprocess tbm trata
     except Exception as e:
